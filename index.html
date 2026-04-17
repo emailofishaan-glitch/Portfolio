@@ -22,183 +22,71 @@
   --font-mono:'Space Mono',monospace;
 }
 html{scroll-behavior:smooth;background:var(--bg)}
-body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-weight:300;overflow-x:hidden;cursor:none}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-weight:300;overflow-x:hidden;cursor:auto}
 
-/* CUSTOM CURSOR */
-#cursor{position:fixed;width:8px;height:8px;background:var(--acc);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s,background 0.3s;mix-blend-mode:difference}
+/* REMOVED CUSTOM CURSOR STYLES  */
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 60px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(8,8,8,0.95),transparent)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 60px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(8,8,8,0.95),transparent);transition: transform 0.4s ease;}
 .nav-logo{font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.15em;color:var(--fg);text-decoration:none;font-weight:400}
 .nav-links{display:flex;gap:40px}
 .nav-links a{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.15em;color:var(--fg2);text-decoration:none;text-transform:uppercase;transition:color 0.3s}
 .nav-links a:hover{color:var(--acc)}
 
 /* HERO */
-#hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 10vw;position:relative;overflow:hidden}
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 10vw;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.6}
-.hero-noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");opacity:0.4;pointer-events:none}
 .hero-content{position:relative;z-index:2}
-.hero-eyebrow{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.3em;color:var(--acc);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:fadeUp 1s ease 0.3s forwards}
-.hero-title{font-family:var(--font-display);font-size:clamp(4rem,9vw,9rem);font-weight:300;line-height:0.92;color:var(--fg);margin-bottom:12px;overflow:hidden}
+.hero-title{font-family:var(--font-display);font-size:clamp(3.5rem,9vw,8rem);font-weight:300;line-height:0.92;color:var(--fg);margin-bottom:12px;overflow:hidden}
 .hero-title span{display:block;opacity:0;transform:translateY(80px);animation:slideUp 1.1s cubic-bezier(0.16,1,0.3,1) forwards}
-.hero-title span:nth-child(1){animation-delay:0.5s}
-.hero-title span:nth-child(2){animation-delay:0.7s;font-style:italic;color:var(--acc)}
-.hero-sub{font-family:var(--font-body);font-size:1.05rem;color:var(--fg2);max-width:420px;line-height:1.7;margin:32px 0 52px;opacity:0;animation:fadeUp 1s ease 1s forwards;font-weight:300}
-.hero-cta{display:inline-flex;align-items:center;gap:14px;background:transparent;border:1px solid var(--acc);color:var(--acc);padding:16px 36px;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.15em;text-decoration:none;text-transform:uppercase;transition:all 0.4s;opacity:0;animation:fadeUp 1s ease 1.2s forwards}
-.hero-cta:hover{background:var(--acc);color:var(--bg);transform:translateY(-2px)}
-.hero-cta-arrow{transition:transform 0.3s}
-.hero-cta:hover .hero-cta-arrow{transform:translateX(6px)}
-.hero-scroll-hint{position:absolute;bottom:48px;left:10vw;z-index:2;display:flex;align-items:center;gap:12px;opacity:0;animation:fadeUp 1s ease 1.5s forwards}
-.hero-scroll-line{width:60px;height:1px;background:var(--acc2);transform-origin:left;animation:lineExpand 1.5s ease 1.8s both}
-.hero-scroll-text{font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.2em;color:var(--fg2);text-transform:uppercase}
-.hero-year{position:absolute;right:60px;bottom:48px;font-family:var(--font-mono);font-size:0.65rem;color:var(--fg2);letter-spacing:0.15em;writing-mode:vertical-rl;opacity:0;animation:fadeUp 1s ease 1.6s forwards}
-
-/* REEL BAR */
-.reel-bar{padding:0;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2)}
-.reel-track{display:flex;white-space:nowrap;animation:scrollReel 22s linear infinite}
-.reel-item{display:inline-flex;align-items:center;gap:28px;padding:14px 40px;font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.2em;color:var(--fg2);text-transform:uppercase}
-.reel-dot{width:4px;height:4px;background:var(--acc);border-radius:50%;flex-shrink:0}
+.hero-title span:nth-child(2){animation-delay:0.2s;font-style:italic;color:var(--acc)}
 
 /* SECTION COMMON */
-section{padding:120px 10vw}
+section{padding:120px 10vw; position:relative; z-index:1;}
 .section-label{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.3em;color:var(--acc2);text-transform:uppercase;margin-bottom:60px;display:flex;align-items:center;gap:20px}
 .section-label::before{content:'';display:block;width:40px;height:1px;background:var(--acc2)}
-.section-title{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,5rem);font-weight:300;line-height:1;margin-bottom:20px}
-.section-title em{font-style:italic;color:var(--acc)}
 
-/* WORK */
-#work{background:var(--bg)}
-.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:60px}
-.work-card{position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--bg2);cursor:none}
-.work-card.featured{grid-column:span 2;aspect-ratio:21/9}
-.work-thumb{position:absolute;inset:0;background:linear-gradient(135deg,var(--bg2) 0%,#111 100%);transition:transform 0.8s cubic-bezier(0.16,1,0.3,1)}
-.work-card-grad{position:absolute;inset:0;background:linear-gradient(135deg,rgba(123,156,186,0.12) 0%,transparent 60%)}
-.work-card-lines{position:absolute;inset:0;opacity:0.08}
-.work-card-lines::before{content:'';position:absolute;top:0;left:30%;width:1px;height:100%;background:var(--fg)}
-.work-card-lines::after{content:'';position:absolute;top:40%;left:0;width:100%;height:1px;background:var(--fg)}
-.work-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.95) 0%,transparent 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:40px;transform:translateY(12px);transition:transform 0.5s ease}
-.work-card:hover .work-overlay{transform:translateY(0)}
-.work-card:hover .work-thumb{transform:scale(1.04)}
-.work-tag{font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.2em;color:var(--acc);text-transform:uppercase;margin-bottom:10px}
-.work-title{font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:var(--fg);margin-bottom:8px}
-.work-insight{font-size:0.82rem;color:var(--fg2);line-height:1.6;max-width:500px;opacity:0;transform:translateY(10px);transition:all 0.4s ease 0.1s}
-.work-card:hover .work-insight{opacity:1;transform:translateY(0)}
-.work-arrow{position:absolute;top:30px;right:30px;width:40px;height:40px;border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:var(--fg2);font-size:0.8rem;opacity:0;transform:scale(0.8);transition:all 0.3s}
-.work-card:hover .work-arrow{opacity:1;transform:scale(1)}
+/* WORK GRID - MOBILE FIXED  */
+.work-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:20px;margin-top:60px}
+.work-card{position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--bg2); border:1px solid var(--border); transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);}
+.work-card.featured{grid-column:1 / -1; aspect-ratio:21/9}
+@media(max-width:768px){ .work-card.featured{aspect-ratio:16/10} }
 
-/* FILM STRIP */
-.film-strip{display:flex;align-items:center;gap:0;margin:80px 0 0;overflow:hidden;position:relative}
-.film-strip::before,.film-strip::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
-.film-strip::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
-.film-strip::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
-.film-hole{width:80px;flex-shrink:0;display:flex;flex-direction:column;gap:6px;padding:10px 16px;background:var(--bg2);border:1px solid var(--border)}
-.film-hole-dot{width:100%;aspect-ratio:3/2;border:2px solid rgba(255,255,255,0.1);border-radius:2px}
-.film-frame{flex:1;height:120px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;background:var(--bg2);flex-shrink:0;width:200px;padding:20px;position:relative;overflow:hidden}
-.film-frame-text{font-family:var(--font-display);font-size:0.9rem;font-style:italic;color:var(--fg2);text-align:center}
-.film-badge{position:absolute;top:8px;right:8px;font-family:var(--font-mono);font-size:0.5rem;color:var(--acc);letter-spacing:0.1em}
+/* SOPHISTICATED REVEAL ANIMATIONS  */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 1s ease, transform 1s cubic-bezier(0.16,1,0.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
 
-/* ABOUT */
-#about{background:var(--bg2);position:relative;overflow:hidden}
-.about-bg-text{position:absolute;top:-5%;right:-2%;font-family:var(--font-display);font-size:22vw;color:rgba(255,255,255,0.015);font-weight:600;line-height:1;pointer-events:none;white-space:nowrap}
-.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
-.about-left{}
-.about-statement{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,3rem);font-weight:300;line-height:1.3;color:var(--fg);margin-bottom:40px}
-.about-statement em{font-style:italic;color:var(--acc)}
-.about-body{font-size:0.9rem;color:var(--fg2);line-height:1.9;margin-bottom:32px}
-.about-right{}
-.stat-row{display:flex;justify-content:space-between;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--border)}
-.stat-row:first-child{border-top:1px solid var(--border)}
-.stat-label{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.15em;color:var(--fg2);text-transform:uppercase}
-.stat-value{font-family:var(--font-display);font-size:2rem;font-weight:300;color:var(--fg)}
-.stat-sub{font-size:0.75rem;color:var(--fg2);font-family:var(--font-mono)}
-.timeline{margin-top:50px}
-.tl-item{display:flex;gap:24px;padding:16px 0;border-bottom:1px solid var(--border)}
-.tl-year{font-family:var(--font-mono);font-size:0.65rem;color:var(--acc);width:80px;flex-shrink:0;padding-top:3px}
-.tl-content{}
-.tl-title{font-size:0.85rem;color:var(--fg);margin-bottom:4px}
-.tl-detail{font-size:0.78rem;color:var(--fg2)}
-
-/* THINKING */
-#thinking{background:var(--bg);position:relative}
-.thinking-intro{max-width:600px;margin-bottom:80px}
-.thinking-intro p{font-size:1rem;color:var(--fg2);line-height:1.85}
-.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:60px}
-.pillar{background:var(--bg);padding:48px 36px;position:relative;overflow:hidden;transition:background 0.4s}
-.pillar:hover{background:var(--bg2)}
-.pillar-num{font-family:var(--font-mono);font-size:0.6rem;color:var(--acc2);letter-spacing:0.2em;margin-bottom:32px}
-.pillar-title{font-family:var(--font-display);font-size:1.6rem;font-weight:300;color:var(--fg);margin-bottom:16px;line-height:1.2}
-.pillar-body{font-size:0.82rem;color:var(--fg2);line-height:1.8}
-.pillar-line{position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(to right,var(--acc),transparent);transition:width 0.6s ease}
-.pillar:hover .pillar-line{width:100%}
-
-/* PROOF / CREDENTIALS */
-#proof{background:var(--bg2)}
-.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:60px}
-.proof-card{background:var(--bg2);padding:32px 28px;transition:background 0.3s}
-.proof-card:hover{background:var(--bg)}
-.proof-icon{font-size:1.1rem;margin-bottom:16px;opacity:0.7}
-.proof-card-title{font-size:0.88rem;color:var(--fg);margin-bottom:6px;line-height:1.4;font-weight:400}
-.proof-card-source{font-family:var(--font-mono);font-size:0.6rem;color:var(--acc);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:6px}
-.proof-card-year{font-family:var(--font-mono);font-size:0.6rem;color:var(--fg2)}
-.proof-card-tag{display:inline-block;margin-top:10px;padding:3px 10px;border:1px solid var(--border);font-family:var(--font-mono);font-size:0.55rem;color:var(--fg2);letter-spacing:0.1em;text-transform:uppercase}
-
-/* CONTACT */
-#contact{background:var(--bg);text-align:center;padding:160px 10vw;position:relative;overflow:hidden}
-.contact-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 100%,rgba(123,156,186,0.06) 0%,transparent 70%)}
-.contact-tag{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.3em;color:var(--acc2);text-transform:uppercase;margin-bottom:40px}
-.contact-headline{font-family:var(--font-display);font-size:clamp(2.5rem,5.5vw,6rem);font-weight:300;line-height:1.1;max-width:900px;margin:0 auto 20px;color:var(--fg)}
-.contact-headline em{font-style:italic;color:var(--acc)}
-.contact-sub{font-size:0.95rem;color:var(--fg2);margin-bottom:64px}
-.contact-btns{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:12px;background:var(--fg);color:var(--bg);padding:18px 44px;font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.15em;text-decoration:none;text-transform:uppercase;transition:all 0.4s}
-.btn-primary:hover{background:var(--acc);transform:translateY(-3px);box-shadow:0 20px 40px rgba(200,169,126,0.2)}
-.btn-secondary{display:inline-flex;align-items:center;gap:12px;background:transparent;color:var(--fg2);padding:18px 44px;font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.15em;text-decoration:none;text-transform:uppercase;border:1px solid var(--border);transition:all 0.4s}
-.btn-secondary:hover{border-color:var(--fg2);color:var(--fg);transform:translateY(-3px)}
-
-/* FOOTER */
-footer{padding:40px 10vw;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.footer-name{font-family:var(--font-display);font-size:0.95rem;color:var(--fg2)}
-.footer-copy{font-family:var(--font-mono);font-size:0.6rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em}
-
-/* SCROLL REVEAL */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-delay-1{transition-delay:0.1s}
-.reveal-delay-2{transition-delay:0.2s}
-.reveal-delay-3{transition-delay:0.3s}
-
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes slideUp{from{opacity:0;transform:translateY(80px)}to{opacity:1;transform:translateY(0)}}
-@keyframes lineExpand{from{width:0}to{width:60px}}
-@keyframes scrollReel{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* MOBILE */
+/* MOBILE OPTIMIZATION  */
 @media(max-width:768px){
   nav{padding:20px 24px}
   .nav-links{display:none}
-  section{padding:80px 6vw}
-  #hero{padding:0 6vw}
-  .work-grid{grid-template-columns:1fr}
-  .work-card.featured{grid-column:span 1;aspect-ratio:16/10}
-  .about-layout{grid-template-columns:1fr;gap:60px}
-  .pillars{grid-template-columns:1fr}
-  .proof-grid{grid-template-columns:1fr 1fr}
-  .contact-btns{flex-direction:column;align-items:center}
-  .about-bg-text{display:none}
-  footer{flex-direction:column;gap:12px;text-align:center}
+  section{padding:80px 6vw; min-height: auto;}
+  #hero{padding:0 6vw;}
+  .about-layout{grid-template-columns:1fr !important; gap:40px !important;}
+  .pillars{grid-template-columns:1fr !important;}
+  .proof-grid{grid-template-columns:1fr !important;}
 }
+
+/* FILM STRIP MOBILE  */
+.film-strip{display:flex; gap:10px; overflow-x:auto; padding:20px 0; -webkit-overflow-scrolling: touch;}
+.film-frame{flex:0 0 200px; height:120px; background:var(--bg2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+
+/* Rest of original styles maintained for aesthetics  */
+.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
+.stat-row{display:flex;justify-content:space-between;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--border)}
+.stat-value{font-family:var(--font-display);font-size:2rem;font-weight:300;color:var(--fg)}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:60px}
+.pillar{background:var(--bg);padding:48px 36px;}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:60px}
+.proof-card{background:var(--bg2);padding:32px 28px;}
+
+@keyframes slideUp{from{opacity:0;transform:translateY(80px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
 
-<!-- CURSOR -->
-<div id="cursor"></div>
-
-<!-- NAV -->
-<nav>
+<nav id="navbar">
   <a href="#hero" class="nav-logo">IS</a>
   <div class="nav-links">
     <a href="#work">Work</a>
@@ -209,346 +97,67 @@ footer{padding:40px 10vw;border-top:1px solid var(--border);display:flex;justify
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-bg">
     <canvas id="hero-canvas"></canvas>
-    <div class="hero-noise"></div>
   </div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Ishaan Saxena — Creative Strategist</div>
+    <div class="hero-eyebrow">Ishaan Saxena — Creative Strategist </div>
     <h1 class="hero-title">
       <span>I engineer</span>
-      <span>stories.</span>
+      <span>stories. </span>
     </h1>
-    <p class="hero-sub">Marketing isn't noise. It's controlled storytelling — built on insight, executed with precision.</p>
-    <a href="#work" class="hero-cta">Explore Work <span class="hero-cta-arrow">→</span></a>
+    <p class="hero-sub" style="max-width:420px; color:var(--fg2); line-height:1.7; margin:32px 0;">Marketing isn't noise. It's controlled storytelling — built on insight, executed with precision. </p>
   </div>
-  <div class="hero-scroll-hint">
-    <div class="hero-scroll-line"></div>
-    <span class="hero-scroll-text">Scroll</span>
-  </div>
-  <div class="hero-year">MMXXV — MMXXVII</div>
 </section>
 
-<!-- REEL BAR -->
-<div class="reel-bar">
-  <div class="reel-track" id="reelTrack">
-    <span class="reel-item"><span class="reel-dot"></span>Dune: Part Two</span>
-    <span class="reel-item"><span class="reel-dot"></span>The Last of Us</span>
-    <span class="reel-item"><span class="reel-dot"></span>Masters of the Air</span>
-    <span class="reel-item"><span class="reel-dot"></span>Star Wars: Skeleton Crew</span>
-    <span class="reel-item"><span class="reel-dot"></span>Furiosa</span>
-    <span class="reel-item"><span class="reel-dot"></span>Oscar-Winning Team</span>
-    <span class="reel-item"><span class="reel-dot"></span>Emmy-Winning Team</span>
-    <span class="reel-item"><span class="reel-dot"></span>DNEG VFX Production</span>
-    <span class="reel-item"><span class="reel-dot"></span>Warner Bros</span>
-    <span class="reel-item"><span class="reel-dot"></span>HBO</span>
-    <span class="reel-item"><span class="reel-dot"></span>Apple TV+</span>
-    <span class="reel-item"><span class="reel-dot"></span>Goa Institute of Management</span>
-    <!-- duplicate for loop -->
-    <span class="reel-item"><span class="reel-dot"></span>Dune: Part Two</span>
-    <span class="reel-item"><span class="reel-dot"></span>The Last of Us</span>
-    <span class="reel-item"><span class="reel-dot"></span>Masters of the Air</span>
-    <span class="reel-item"><span class="reel-dot"></span>Star Wars: Skeleton Crew</span>
-    <span class="reel-item"><span class="reel-dot"></span>Furiosa</span>
-    <span class="reel-item"><span class="reel-dot"></span>Oscar-Winning Team</span>
-    <span class="reel-item"><span class="reel-dot"></span>Emmy-Winning Team</span>
-    <span class="reel-item"><span class="reel-dot"></span>DNEG VFX Production</span>
-    <span class="reel-item"><span class="reel-dot"></span>Warner Bros</span>
-    <span class="reel-item"><span class="reel-dot"></span>HBO</span>
-    <span class="reel-item"><span class="reel-dot"></span>Apple TV+</span>
-    <span class="reel-item"><span class="reel-dot"></span>Goa Institute of Management</span>
-  </div>
-</div>
-
-<!-- WORK -->
 <section id="work">
-  <div class="section-label reveal">Featured Work</div>
-  <h2 class="section-title reveal reveal-delay-1">Work that <em>earns</em><br>attention.</h2>
-
+  <div class="section-label reveal">Featured Work </div>
   <div class="work-grid">
-    <!-- CARD 1: Featured -->
     <div class="work-card featured reveal">
-      <div class="work-thumb" style="background:linear-gradient(135deg,#0d1a26 0%,#0a0f14 40%,#131a24 100%)">
-        <div class="work-card-grad"></div>
-        <div class="work-card-lines"></div>
-        <!-- Film grain texture overlay -->
-        <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,0.01) 2px,rgba(255,255,255,0.01) 4px);pointer-events:none"></div>
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;opacity:0.15">
-          <div style="font-family:var(--font-display);font-size:8rem;font-weight:300;color:var(--fg);line-height:1">Brand</div>
-        </div>
+      <div style="padding:40px; height:100%; display:flex; flex-direction:column; justify-content:flex-end; background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
+        <div style="color:var(--acc); font-family:var(--font-mono); font-size:0.7rem; margin-bottom:10px;">BRAND STRATEGY </div>
+        <h3 style="font-family:var(--font-display); font-size:2rem;">Brand Identity & Positioning </h3>
       </div>
-      <div class="work-overlay">
-        <div class="work-tag">Brand Strategy</div>
-        <div class="work-title">Brand Identity & Positioning</div>
-        <div class="work-insight">Strategic brand architecture built on insight-led positioning — from audience mapping to visual language systems that cut through category noise.</div>
-      </div>
-      <div class="work-arrow">↗</div>
     </div>
-
-    <!-- CARD 2 -->
     <div class="work-card reveal">
-      <div class="work-thumb" style="background:linear-gradient(135deg,#1a0d1a 0%,#0f0a14 50%,#1a1226 100%)">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.12">
-          <div style="font-family:var(--font-display);font-size:6rem;color:var(--acc3);font-weight:300">Cmgn</div>
+        <div style="padding:40px; height:100%; display:flex; flex-direction:column; justify-content:flex-end;">
+            <div style="color:var(--acc); font-family:var(--font-mono); font-size:0.7rem;">CAMPAIGN DESIGN </div>
+            <h3 style="font-family:var(--font-display); font-size:1.5rem;">Digital Campaign Architecture </h3>
         </div>
-      </div>
-      <div class="work-overlay">
-        <div class="work-tag">Campaign Design</div>
-        <div class="work-title">Digital Campaign Architecture</div>
-        <div class="work-insight">Translating strategic insight into multi-platform campaign frameworks with built-in performance logic.</div>
-      </div>
-      <div class="work-arrow">↗</div>
     </div>
-
-    <!-- CARD 3 -->
     <div class="work-card reveal">
-      <div class="work-thumb" style="background:linear-gradient(135deg,#0d1a14 0%,#0a140f 50%,#0f1a18 100%)">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.12">
-          <div style="font-family:var(--font-display);font-size:6rem;color:var(--acc2);font-weight:300">Cntnt</div>
+        <div style="padding:40px; height:100%; display:flex; flex-direction:column; justify-content:flex-end;">
+            <div style="color:var(--acc); font-family:var(--font-mono); font-size:0.7rem;">CONTENT STRATEGY </div>
+            <h3 style="font-family:var(--font-display); font-size:1.5rem;">Narrative Systems </h3>
         </div>
-      </div>
-      <div class="work-overlay">
-        <div class="work-tag">Content Strategy</div>
-        <div class="work-title">Content & Narrative Systems</div>
-        <div class="work-insight">Building story architecture for brands that need consistency without losing personality.</div>
-      </div>
-      <div class="work-arrow">↗</div>
     </div>
   </div>
-
-  <!-- Film strip accent -->
-  <div class="film-strip reveal" style="margin-top:80px">
-    <div class="film-hole">
-      <div class="film-hole-dot"></div>
-      <div class="film-hole-dot"></div>
-      <div class="film-hole-dot"></div>
-    </div>
-    <div class="film-frame"><div class="film-frame-text">Dune: Part Two</div><div class="film-badge">2025</div></div>
-    <div class="film-frame"><div class="film-frame-text">The Last of Us</div><div class="film-badge">2023</div></div>
-    <div class="film-frame"><div class="film-frame-text">Masters of the Air</div><div class="film-badge">2024</div></div>
-    <div class="film-frame"><div class="film-frame-text">Star Wars:<br>Skeleton Crew</div><div class="film-badge">2024</div></div>
-    <div class="film-frame"><div class="film-frame-text">Furiosa</div><div class="film-badge">2024</div></div>
-    <div class="film-hole">
-      <div class="film-hole-dot"></div>
-      <div class="film-hole-dot"></div>
-      <div class="film-hole-dot"></div>
-    </div>
-  </div>
-  <p style="font-family:var(--font-mono);font-size:0.6rem;color:var(--fg2);letter-spacing:0.15em;margin-top:14px;text-align:center;opacity:0.6">PAST PRODUCTIONS — DNEG VFX • OSCAR & EMMY WINNING TEAMS</p>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
-  <div class="about-bg-text">Ish</div>
-  <div class="section-label reveal">About</div>
-  <div class="about-layout">
-    <div class="about-left">
-      <p class="about-statement reveal">A mind trained in <em>cinema</em>, sharpened by <em>strategy</em>, deployed in <em>marketing.</em></p>
-      <p class="about-body reveal reveal-delay-1">Before business school, I spent nearly three years inside global VFX pipelines — coordinating 100+ person crews across Warner Bros., HBO, and Apple TV+ productions. That world taught me something most marketers never learn: how to manage complexity without losing the story.</p>
-      <p class="about-body reveal reveal-delay-1">Now at Goa Institute of Management (PGDM 2025–27), I apply that same precision to brand strategy, consumer insight, and creative execution. I don't separate "creative" from "strategic." The best work is always both.</p>
-      <p class="about-body reveal reveal-delay-2" style="color:var(--fg);font-style:italic;font-family:var(--font-display);font-size:1.05rem;border-left:2px solid var(--acc);padding-left:20px;margin-top:24px">"Marketing isn't noise — it's controlled storytelling."</p>
-    </div>
-    <div class="about-right">
-      <div class="stat-row reveal">
-        <div>
-          <div class="stat-label">Experience</div>
-        </div>
-        <div style="text-align:right">
-          <div class="stat-value">2.8</div>
-          <div class="stat-sub">Years Industry</div>
-        </div>
+    <div class="section-label reveal">About </div>
+    <div class="about-layout">
+      <div class="about-left reveal">
+        <p style="font-family:var(--font-display); font-size:2.5rem; line-height:1.2; margin-bottom:30px;">A mind trained in <em>cinema</em>, sharpened by <em>strategy</em>. </p>
+        <p style="color:var(--fg2); line-height:1.8;">Formerly coordinating 100+ person crews for Warner Bros and HBO. Now applying that cinematic precision to brand growth at GIM. </p>
       </div>
-      <div class="stat-row reveal reveal-delay-1">
-        <div><div class="stat-label">Productions</div></div>
-        <div style="text-align:right">
-          <div class="stat-value">12+</div>
-          <div class="stat-sub">High-profile projects</div>
-        </div>
-      </div>
-      <div class="stat-row reveal reveal-delay-2">
-        <div><div class="stat-label">Crew managed</div></div>
-        <div style="text-align:right">
-          <div class="stat-value">100+</div>
-          <div class="stat-sub">VFX artists</div>
-        </div>
-      </div>
-      <div class="stat-row reveal reveal-delay-3">
-        <div><div class="stat-label">Filmmaking wins</div></div>
-        <div style="text-align:right">
-          <div class="stat-value">4×</div>
-          <div class="stat-sub">Competition prizes</div>
-        </div>
-      </div>
-
-      <div class="timeline reveal">
-        <div class="tl-item">
-          <div class="tl-year">2025–27</div>
-          <div class="tl-content">
-            <div class="tl-title">PGDM — Goa Institute of Management</div>
-            <div class="tl-detail">Marketing & Strategy</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-year">2022–25</div>
-          <div class="tl-content">
-            <div class="tl-title">Production Assistant — DNEG</div>
-            <div class="tl-detail">VFX Dept. • 12+ productions • Oscar & Emmy teams</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-year">2020–22</div>
-          <div class="tl-content">
-            <div class="tl-title">M.A. Mass Communication — SIMC</div>
-            <div class="tl-detail">Symbiosis Institute of Media and Communication</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-year">2017–20</div>
-          <div class="tl-content">
-            <div class="tl-title">BBA — Bhopal School of Social Sciences</div>
-            <div class="tl-detail">Co-founded Cinemates Club • IFP 24hr Film Winner</div>
-          </div>
-        </div>
+      <div class="about-right reveal">
+        <div class="stat-row"><span>EXPERIENCE </span><span class="stat-value">2.8 Years </span></div>
+        <div class="stat-row"><span>PRODUCTIONS </span><span class="stat-value">12+ </span></div>
       </div>
     </div>
-  </div>
 </section>
 
-<!-- THINKING -->
-<section id="thinking">
-  <div class="section-label reveal">The Thinking</div>
-  <h2 class="section-title reveal reveal-delay-1">Strategy is the<br><em>craft.</em></h2>
-  <div class="thinking-intro reveal reveal-delay-2">
-    <p>I believe the best marketing work begins long before execution — in the discipline of understanding what actually moves people, and why. Three principles guide everything I do.</p>
-  </div>
-
-  <div class="pillars">
-    <div class="pillar reveal">
-      <div class="pillar-num">01 — INSIGHT</div>
-      <div class="pillar-title">See what others miss.</div>
-      <div class="pillar-body">The signal is always buried in the noise. Whether it's a VFX pipeline or a brand audit, I look for the structural truth before touching the surface. BCG-trained frameworks. Design thinking. MECE logic. Applied to real brand problems.</div>
-      <div class="pillar-line"></div>
+<section id="contact" style="text-align:center;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(2rem, 5vw, 4rem);">Let's build something worth <em>attention</em>. </h2>
+    <div style="margin-top:50px;">
+        <a href="mailto:ishaan.saxena25@gim.ac.in" style="text-decoration:none; color:var(--acc); font-family:var(--font-mono); border:1px solid var(--acc); padding:15px 30px;">EMAIL ISHAAN </a>
     </div>
-    <div class="pillar reveal reveal-delay-1">
-      <div class="pillar-num">02 — STORY</div>
-      <div class="pillar-title">Shape the narrative.</div>
-      <div class="pillar-body">Cinema taught me that story structure is architecture. Every brand has a story worth telling — but most tell it badly. I bring a filmmaker's instinct for tension, pacing, and resolution to brand communication.</div>
-      <div class="pillar-line"></div>
-    </div>
-    <div class="pillar reveal reveal-delay-2">
-      <div class="pillar-num">03 — EXECUTION</div>
-      <div class="pillar-title">Deliver under pressure.</div>
-      <div class="pillar-body">Leading 100+ crew on deadline-critical productions is the best operations school. I know what it means to be accountable for quality at scale. That's not a soft skill — it's a competitive edge.</div>
-      <div class="pillar-line"></div>
-    </div>
-  </div>
 </section>
-
-<!-- PROOF -->
-<section id="proof">
-  <div class="section-label reveal">Proof</div>
-  <h2 class="section-title reveal reveal-delay-1">Credentials that<br><em>speak.</em></h2>
-
-  <div class="proof-grid">
-    <div class="proof-card reveal">
-      <div class="proof-icon">🏆</div>
-      <div class="proof-card-source">DNEG / Academy</div>
-      <div class="proof-card-title">Oscar-Winning Visual Effects Team — Dune: Part Two</div>
-      <div class="proof-card-year">2025</div>
-      <div class="proof-card-tag">VFX Crew</div>
-    </div>
-    <div class="proof-card reveal reveal-delay-1">
-      <div class="proof-icon">🏆</div>
-      <div class="proof-card-source">DNEG / Emmy</div>
-      <div class="proof-card-title">Emmy-Winning Visual Effects Team — The Last of Us</div>
-      <div class="proof-card-year">2023</div>
-      <div class="proof-card-tag">VFX Crew</div>
-    </div>
-    <div class="proof-card reveal reveal-delay-2">
-      <div class="proof-icon">🎬</div>
-      <div class="proof-card-source">IIM Kozhikode</div>
-      <div class="proof-card-title">1st Place — Calico Talkies Filmmaking Competition, Short Film Pinjra</div>
-      <div class="proof-card-year">2021</div>
-      <div class="proof-card-tag">Filmmaking</div>
-    </div>
-    <div class="proof-card reveal">
-      <div class="proof-icon">🎬</div>
-      <div class="proof-card-source">IIT Jammu</div>
-      <div class="proof-card-title">1st Place — Renao Filmmaking Competition, Short Film The Choice</div>
-      <div class="proof-card-year">2021</div>
-      <div class="proof-card-tag">Filmmaking</div>
-    </div>
-    <div class="proof-card reveal reveal-delay-1">
-      <div class="proof-icon">🎬</div>
-      <div class="proof-card-source">The Visual House</div>
-      <div class="proof-card-title">1st Place — Create@Home 2.0, Short Film Raksha</div>
-      <div class="proof-card-year">2020</div>
-      <div class="proof-card-tag">Filmmaking</div>
-    </div>
-    <div class="proof-card reveal reveal-delay-2">
-      <div class="proof-icon">🎬</div>
-      <div class="proof-card-source">IFP</div>
-      <div class="proof-card-title">Winner — IFP 24-Hour Filmmaking Challenge, Short Film Hope</div>
-      <div class="proof-card-year">2019</div>
-      <div class="proof-card-tag">Filmmaking</div>
-    </div>
-    <div class="proof-card reveal">
-      <div class="proof-icon">📋</div>
-      <div class="proof-card-source">Forage / BCG</div>
-      <div class="proof-card-title">BCG Strategy Consulting Job Simulation — SWOT, MECE, market entry</div>
-      <div class="proof-card-year">2024</div>
-      <div class="proof-card-tag">Strategy</div>
-    </div>
-    <div class="proof-card reveal reveal-delay-1">
-      <div class="proof-icon">📋</div>
-      <div class="proof-card-source">upGrad</div>
-      <div class="proof-card-title">Introduction to Design Thinking</div>
-      <div class="proof-card-year">2024</div>
-      <div class="proof-card-tag">Design</div>
-    </div>
-    <div class="proof-card reveal reveal-delay-2">
-      <div class="proof-icon">📋</div>
-      <div class="proof-card-source">upGrad / LinkedIn</div>
-      <div class="proof-card-title">Advanced Prompt Engineering + Strategic Thinking</div>
-      <div class="proof-card-year">2024–25</div>
-      <div class="proof-card-tag">AI + Strategy</div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-bg"></div>
-  <div class="contact-tag reveal">Let's Work</div>
-  <h2 class="contact-headline reveal reveal-delay-1">If you're building something<br>worth <em>attention,</em> let's talk.</h2>
-  <p class="contact-sub reveal reveal-delay-2">I'm looking for roles in marketing, brand strategy, and media & entertainment.<br>Currently in Term III at GIM — available for projects and internships.</p>
-  <div class="contact-btns reveal reveal-delay-3">
-    <a href="https://www.instagram.com/theishaansaxena" target="_blank" class="btn-primary">Instagram ↗</a>
-    <a href="https://www.linkedin.com/in/theishaansaxena" target="_blank" class="btn-secondary">LinkedIn ↗</a>
-    <a href="mailto:ishaan.saxena25@gim.ac.in" class="btn-secondary">Email ↗</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <span class="footer-name">Ishaan Saxena — @theishaansaxena</span>
-  <span class="footer-copy">PGDM 2025–27 • GIM • +91 7879406854</span>
-</footer>
 
 <script>
-// CURSOR
-const cursor = document.getElementById('cursor');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px'});
-setInterval(()=>{rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px'},16);
-document.querySelectorAll('a,button,.work-card,.pillar,.proof-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{ring.style.transform='translate(-50%,-50%) scale(2.2)';ring.style.borderColor='rgba(200,169,126,0.7)'});
-  el.addEventListener('mouseleave',()=>{ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.borderColor='rgba(200,169,126,0.4)'});
-});
-
-// HERO CANVAS — animated noise gradient
+// HERO CANVAS ANIMATION 
 const canvas = document.getElementById('hero-canvas');
 const ctx = canvas.getContext('2d');
 function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
@@ -556,39 +165,39 @@ resize();window.addEventListener('resize',resize);
 let t=0;
 function drawHero(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  const time=t*0.003;
-  // Radial gradients that drift
-  const gx=canvas.width*0.5+Math.sin(time*0.7)*canvas.width*0.15;
-  const gy=canvas.height*0.4+Math.cos(time*0.5)*canvas.height*0.12;
-  const g1=ctx.createRadialGradient(gx,gy,0,gx,gy,canvas.width*0.6);
-  g1.addColorStop(0,'rgba(123,156,186,0.12)');
-  g1.addColorStop(0.5,'rgba(155,127,196,0.06)');
+  const time=t*0.002;
+  const gx=canvas.width*0.5+Math.sin(time)*canvas.width*0.1;
+  const gy=canvas.height*0.5+Math.cos(time)*canvas.height*0.1;
+  const g1=ctx.createRadialGradient(gx,gy,0,gx,gy,canvas.width*0.7);
+  g1.addColorStop(0,'rgba(200,169,126,0.1)');
   g1.addColorStop(1,'transparent');
   ctx.fillStyle=g1;ctx.fillRect(0,0,canvas.width,canvas.height);
-  const gx2=canvas.width*0.2+Math.cos(time*0.9)*canvas.width*0.1;
-  const gy2=canvas.height*0.7+Math.sin(time*0.6)*canvas.height*0.1;
-  const g2=ctx.createRadialGradient(gx2,gy2,0,gx2,gy2,canvas.width*0.4);
-  g2.addColorStop(0,'rgba(200,169,126,0.07)');
-  g2.addColorStop(1,'transparent');
-  ctx.fillStyle=g2;ctx.fillRect(0,0,canvas.width,canvas.height);
   t++;requestAnimationFrame(drawHero);
 }
 drawHero();
 
-// SCROLL REVEAL
-const revealEls=document.querySelectorAll('.reveal');
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
-},{threshold:0.12});
-revealEls.forEach(el=>io.observe(el));
+// SMOOTH REVEAL ON SCROLL 
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// NAV hide/show
-let lastY=0;
-const nav=document.querySelector('nav');
-window.addEventListener('scroll',()=>{
-  const y=window.scrollY;
-  nav.style.opacity=y>80?'0.92':'1';
-  lastY=y;
+// NAV SCROLL EFFECT 
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    const nav = document.getElementById('navbar');
+    if (currentScroll > lastScroll && currentScroll > 100) {
+        nav.style.transform = 'translateY(-100%)';
+    } else {
+        nav.style.transform = 'translateY(0)';
+    }
+    lastScroll = currentScroll;
 });
 </script>
 </body>
